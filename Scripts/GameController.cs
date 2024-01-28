@@ -7,6 +7,8 @@ public partial class GameController : Node
 	[Export] public PackedScene MainMenuScene;
 	[Export] public PackedScene GameScene;
 	[Export] public GameUIController UIController;
+	[Export] public AudioStreamPlayer GameplayMusic;
+	[Export] public AudioStreamPlayer MenuMusic;
 	
 	
 	//[Export] public Godot.Collections.Array<PackedScene> Levels = new Godot.Collections.Array<PackedScene>();
@@ -34,6 +36,9 @@ public partial class GameController : Node
 			currentLevel.QueueFree();
 		}
 
+		MenuMusic.Play();
+		GameplayMusic.Stop();
+		
 		currentLevel = MainMenuScene.Instantiate();
 		AddChild(currentLevel);
 
@@ -47,6 +52,9 @@ public partial class GameController : Node
 			currentLevel.QueueFree();
 		}
 
+		MenuMusic.Stop();
+		GameplayMusic.Play();
+		
 		currentLevel = GameScene.Instantiate();
 		AddChild(currentLevel);
 		GGJ.mobController.StartSpawning();
