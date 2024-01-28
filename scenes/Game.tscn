@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6n82ldgox3r8"]
+[gd_scene load_steps=6 format=3 uid="uid://b6n82ldgox3r8"]
 
 [ext_resource type="PackedScene" uid="uid://df71cux51tuem" path="res://scenes/GameController.tscn" id="1_kqujs"]
 [ext_resource type="PackedScene" uid="uid://bh8otnq5yjasw" path="res://scenes/UI.tscn" id="3_ps4yy"]
 [ext_resource type="PackedScene" uid="uid://cv46hv4h8ftts" path="res://scenes/MobController.tscn" id="4_8yw2l"]
 [ext_resource type="Texture2D" uid="uid://b318x7qnqnx75" path="res://Textures/chicken crossing.png" id="4_xhjwb"]
+[ext_resource type="Texture2D" uid="uid://3xumo831o88s" path="res://Textures/HealthBar.png" id="5_apsvg"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,7 +14,22 @@ UIController = NodePath("../UI")
 [node name="MobController" parent="." instance=ExtResource("4_8yw2l")]
 
 [node name="UI" parent="." node_paths=PackedStringArray("ProgressBar") instance=ExtResource("3_ps4yy")]
+visible = true
 ProgressBar = NodePath("HealthBar")
+
+[node name="HealthBar" parent="UI" index="0"]
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 390.0
+tint_under = Color(1, 0, 0, 1)
+tint_over = Color(1, 0, 0, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar" index="0"]
+position = Vector2(109.79, 195.769)
+scale = Vector2(0.146598, 1.56721)
+texture = ExtResource("5_apsvg")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="UI"]
 
