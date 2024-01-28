@@ -9,6 +9,7 @@ public partial class GameController : Node
 	[Export] public GameUIController UIController;
 	[Export] public AudioStreamPlayer GameplayMusic;
 	[Export] public AudioStreamPlayer MenuMusic;
+	[Export] public Label GameOverLabel;
 	
 	
 	//[Export] public Godot.Collections.Array<PackedScene> Levels = new Godot.Collections.Array<PackedScene>();
@@ -43,6 +44,13 @@ public partial class GameController : Node
 		AddChild(currentLevel);
 
 		UIController.Visible = false;
+	}
+
+	public void GameOver()
+	{
+		GameOverLabel.Visible = true;
+		GGJ.player.Visible = false;
+		GGJ.mobController.StopSpawning();
 	}
 
 	public void NewGame()

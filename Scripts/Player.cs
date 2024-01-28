@@ -278,6 +278,8 @@ public partial class Player : CharacterBody2D
 			{
 				//die
 				GD.Print("You have died!");
+
+				GGJ.gameController.GameOver();
 			}
 		}
 		else

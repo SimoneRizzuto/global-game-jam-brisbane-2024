@@ -119,8 +119,8 @@ public partial class MobController : Node
 
     protected Vector2 GetNextSpawnPos()
     {
-        Vector2 dimsLower = new Vector2(50, 100);
-        Vector2 dimsUpper = new Vector2(50, 500);
+        Vector2 dimsLower = new Vector2(50, 200);
+        Vector2 dimsUpper = new Vector2(50, 600);
         Vector2 spawnPos = new Vector2((float)GD.RandRange(dimsLower.X, dimsUpper.X), (float)GD.RandRange(dimsLower.Y, dimsUpper.Y));
         return spawnPos;
     }
