@@ -61,5 +61,6 @@ animation = &"PlayerIdle"
 visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("5_vs3w8")
+animation = &"PlayerRoll"
 
 [connection signal="animation_looped" from="AnimPlayerPunch" to="." method="FinishPunchAttack"]
