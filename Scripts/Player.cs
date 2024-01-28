@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using globalgamejam2024.Shared;
 using System.ComponentModel.Design;
 
@@ -14,6 +15,7 @@ public partial class Player : CharacterBody2D
 	[Export] public double DodgeLength = 0.5f;
 	protected double tLeftDodge = 0;
 
+	private AudioStreamPlayer _punchSoundEffect;
 	[Export] AnimatedSprite2D WalkAnim;
 	[Export] AnimatedSprite2D PunchAnim;
 	[Export] AnimatedSprite2D IdleAnim;
@@ -53,6 +55,15 @@ public partial class Player : CharacterBody2D
 		PunchArea2D.CollisionLayer = GGJCollisionLayers.Bitmask(GGJCollisionLayers.Enemy);
 		PunchArea2D.CollisionMask = GGJCollisionLayers.Bitmask(GGJCollisionLayers.Enemy);
 		*/
+
+        var children = GetChildren();
+        foreach (var child in children)
+        {
+	        if (child is AudioStreamPlayer)
+	        {
+		        _punchSoundEffect = (AudioStreamPlayer)child;
+	        }
+        }        
     }
 
 	public override void _Process(double delta)
@@ -238,6 +249,11 @@ public partial class Player : CharacterBody2D
 
 			//disable idle anim
 			IdleAnim.Visible = false;
+
+			if (_punchSoundEffect != null)
+			{
+				_punchSoundEffect.Play();
+			}
 			
 			GD.Print("Punch start.");
 		}
@@ -273,6 +289,11 @@ public partial class Player : CharacterBody2D
 	private void FinishPunchAttack()
 	{
 		GD.Print("Punch over. New relationship with idle.");
+
+		if (_punchSoundEffect != null)
+		{
+			_punchSoundEffect.Stop();	
+		}
 		
 		PunchAnim.Visible = false;
 		PunchAnim.Stop();

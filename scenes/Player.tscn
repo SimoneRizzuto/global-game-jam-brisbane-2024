@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx3siqxgfp4xn"]
+[gd_scene load_steps=9 format=3 uid="uid://cx3siqxgfp4xn"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_qepup"]
 [ext_resource type="SpriteFrames" uid="uid://cstcmsdjd4e8g" path="res://Textures/player_punch.tres" id="3_arkxf"]
 [ext_resource type="SpriteFrames" uid="uid://dfmc763buqcwo" path="res://Textures/player_walk.tres" id="4_hks7x"]
 [ext_resource type="SpriteFrames" uid="uid://454lsmdjxrv3" path="res://Textures/player_idle.tres" id="5_rj76q"]
 [ext_resource type="SpriteFrames" uid="uid://b72i1m0ynn7mg" path="res://Textures/player_dodge.tres" id="5_vs3w8"]
+[ext_resource type="AudioStream" uid="uid://b3arshrhe5rg1" path="res://Sounds/Punch1.wav" id="6_wmm2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lf6q1"]
 radius = 30.0
@@ -62,5 +63,9 @@ visible = false
 scale = Vector2(0.03, 0.03)
 sprite_frames = ExtResource("5_vs3w8")
 animation = &"PlayerRoll"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wmm2w")
+volume_db = -10.4
 
 [connection signal="animation_looped" from="AnimPlayerPunch" to="." method="FinishPunchAttack"]
