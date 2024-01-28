@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by05o6mmn75jk"]
 
-[ext_resource type="Texture2D" uid="uid://bqruggspwu01p" path="res://Textures/fence.png" id="1_petjf"]
+[ext_resource type="Texture2D" uid="uid://dvktdonvci1oy" path="res://Textures/bin obstacle.png" id="1_7tytk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ybqw3"]
 a = Vector2(-100, 0)
@@ -15,4 +15,4 @@ shape = SubResource("SegmentShape2D_ybqw3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_petjf")
+texture = ExtResource("1_7tytk")
